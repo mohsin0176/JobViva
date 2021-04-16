@@ -35,7 +35,7 @@ if(isset($_POST['Submit'])) {
     $result = mysqli_query($mysqli, "INSERT INTO task(id,name,asby,subto,date,time) VALUES('$id','$name','$asby','$subto','$date','$time')");   
   }
   ?>
-  
+
     <div class="container">
       <div class="jumbotron">
      <div class="text-center"> 
@@ -93,8 +93,7 @@ if(isset($_POST['Submit'])) {
         echo "<td>".$user_data['subto']."</td>";
         echo "<td>".$user_data['date']."</td>";
         echo "<td>".$user_data['time']."</td>";
-        echo "<td>Edit</td>";
-        echo "<td>Delete</td>";
+        echo "<td><a href='index.php?id=$user_data[id]'>Edit</a></td>"; echo "<td><a href='index.php?id=$user_data[id]'>Delete</a></td>"; 
         
     }
     ?>
