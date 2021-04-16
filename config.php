@@ -1,15 +1,16 @@
 <?php
- 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'task');
- 
-
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
+// used to connect to the database
+$host = "localhost";
+$db_name = "php_beginner_crud_level_1";
+$username = "root";
+$password = "";
+  
+try {
+    $con = new PDO("mysql:host={$host};dbname={$db_name}", $username, $password);
+}
+  
+// show error
+catch(PDOException $exception){
+    echo "Connection error: " . $exception->getMessage();
 }
 ?>
