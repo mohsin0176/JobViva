@@ -63,7 +63,6 @@ if(isset($_GET['id']) && isset($_GET['ed']))
 	$date=$user_data['date'];
 	$time=$user_data['time'];        
     }
-
     if(isset($_POST['edit'])) 
 	{
 	$id = $_POST['id'];
@@ -72,9 +71,21 @@ if(isset($_GET['id']) && isset($_GET['ed']))
 	$subto=$_POST['subto'];
 	$date=$_POST['date'];
 	$time=$_POST['time'];
-	$result = mysqli_query($mysqli, "UPDATE task SET id='$id',name='$name',asby='$asby',subto='$subto',date='$date',time='$time'; WHERE id=$id");
-	header("Location: index.php");
+	$query="UPDATE task SET id='$id',name='$name',asby='$asby',subto='$subto',date='$date',time='$time' WHERE id='$id'";
+	$result = mysqli_query($mysqli,$query);
+	if ($mysqli) 
+	{
+		header("Location: index.php");
+	}
+	else
+	{
+        echo "failed";
+	}
+
 	} 
+
+
+    
   
 
 ?>	
@@ -91,7 +102,7 @@ if(isset($_GET['id']) && isset($_GET['ed']))
  
         <div class="modal-body">
           <!-----------------edit Body ----------------->
-          <form action="" method="post" name="form1">
+          <form action="" method="POST" name="form1">
     <table width="100%" border="0">
       <tr>
         <td>ID</td>
@@ -120,7 +131,7 @@ if(isset($_GET['id']) && isset($_GET['ed']))
 
       <tr>
         <td></td>
-        <td><input type="submit" name="edit" value="Done"></td>
+        <td><input type="submit" name="edit" class="btn btn-default"value="Done"></td>
       </tr>
     </table>
   </form>
@@ -148,7 +159,7 @@ if(isset($_GET['id']) && isset($_GET['ed']))
     </div>
     <div class="container">
       <div class="jumbotron">
-        <form action="" method="post" name="form1">
+        <form action="index.php" method="POST" name="form1">
     <table width="100%" border="0">
       <tr>
         <td>ID</td>
